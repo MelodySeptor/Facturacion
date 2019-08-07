@@ -1,9 +1,18 @@
-var confiReader = require('./External/configReader')
+var express = require('express')
+var app = express()
 
-confiReader.readConfigurations("config.txt")
+app.set('view engine', 'pug')
+
+app.get('/', function(req, res){
+    res.render('principal')
+})
+
+app.listen(8080, function(){
+    console.log("Server Up.")
+})
+
 /**
  * Modulos:
- *      - Leer fichero configuración.
  *      - Recoger de excel.
  *      - Generar HTML.
  *      - Generar PDF de HTML.

@@ -1,18 +1,23 @@
 var file = require("fs");
 
-var testConfigurations = function(){
+var testConfigurations = function(content){
     var correct = false
-    //@TODO
+    if(!isNaN(String(content).substring(1))){
+        if(isNaN(String(content).substring(0,1))){
+            correct = true
+        }
+    }
     correct ? console.log("Opciones correctas") : console.log("Opciones incorrectas");process.exit(1)
 }
 
 var readConfigurations = function(fileName){
-    console.log("Getting option from: " + fileName); 
+    console.log("Obteniendo opciones de: " + fileName); 
 
     var content = file.readFileSync(fileName);
-    console.log("Options: " + content);
+    console.log("Opciones: " + content);
 
-    testConfigurations()
+    testConfigurations(content)
+    return content
 }
 
 module.exports.readConfigurations = readConfigurations
