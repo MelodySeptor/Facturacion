@@ -1,0 +1,12 @@
+html
+  head
+    title= "Upload"
+  body
+    h1= "Inicio"
+    br
+    p= "Introduce el archivo:"
+    br
+    form(action="/fileupload" method="post")
+        input(type="file" name="filetoupload" value="Examinar")
+        br
+        input(type="submit" value="Aceptar")
