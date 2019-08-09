@@ -13,21 +13,20 @@ app.get('/', function(req, res){
 
 app.post('/fileupload', function(req, res){
     dataBlock.users = excelParser.excelParser(req.body.filetoupload)
+    dataBlock.users = dataBlock.processUsersToSystem(dataBlock.users)
     console.log(dataBlock.users)
     res.redirect('/recibo')
 })
 
 app.get('/recibo', function(req, res){
-    res.render('principal')
+    var aux = dataBlock.users
+    res.render('principal', {aux:aux})
+})
+
+app.get('/genRecibos', function(req, res){
+    res.render('confirmacion')
 })
 
 app.listen(8080, function(){
     console.log("Server Up.")
 })
-
-/**
- * Modulos:
- *      - Recoger de excel.
- *      - Generar HTML.
- *      - Generar PDF de HTML.
- */
