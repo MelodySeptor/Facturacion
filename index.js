@@ -1,6 +1,7 @@
 var express = require('express')
 var excelParser = require('./External/excelParser')
 var dataBlock = require('./External/dataBlock')
+var pdfCreator = require('./External/pdfCreator')
 var bodyParser = require('body-parser');
 var app = express()
 
@@ -23,8 +24,10 @@ app.get('/recibo', function(req, res){
     res.render('principal', {aux:aux})
 })
 
-app.get('/genRecibos', function(req, res){
+app.post('/genRecibos', function(req, res){
+    pdfCreator.createPDF(dataBlock.users)
     res.render('confirmacion')
+    process.exit(1)
 })
 
 app.listen(8080, function(){
