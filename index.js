@@ -27,7 +27,6 @@ app.get('/recibo', function(req, res){
 app.post('/genRecibos', function(req, res){
     pdfCreator.createPDF(dataBlock.users)
     res.render('confirmacion')
-    process.exit(1)
 })
 
 app.listen(8080, function(){
