@@ -1,24 +1,35 @@
 html
   head
-    title= "Recibos"
+      title= "Generador de Recibos - pre-visualización"
+      meta(charset="utf-8")
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+      <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   body
-    h1= "Lista Alumnos"
-    br
-    table
-      tr
-        th= 'Nombre'
-        th= 'Apellidos'
-        th= 'Codigo'
-        th= 'Importe'
-        th= 'Concepto'
+      section(class="section is-medium")
+          div(class="container is-widescreen")
+              div(class="notification")
+                  section(class="hero is-primary")
+                      div(class="hero-body")
+                          div(class="container")
+                              h1(class="title")= "Generador de recibos - Visualización"
+                              h2(class="subtitle")= "Creado por Pol Gómez"
+            
+                  table(class="table")
+                      tr
+                        th= 'Nombre'
+                        th= 'Apellidos'
+                        th= 'Codigo'
+                        th= 'Importe'
+                        th= 'Concepto'
 
-      for item in aux
-        tr
-          td= item.name
-          td= item.surname
-          td= item.code
-          td= item.import
-          td= item.reason
-    
-    form(action="/genRecibos" method="post")
-        input(type="submit" value="Confirmar")
+                      for item in aux
+                        tr
+                          td= item.name
+                          td= item.surname
+                          td= item.code
+                          td= item.import
+                          td= item.reason
+                  br
+                  form(action="/genRecibos" method="post")
+                        input(type="submit" value="Confirmar" class="button is-primary")

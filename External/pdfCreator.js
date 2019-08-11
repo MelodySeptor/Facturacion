@@ -19,9 +19,9 @@ var month = function(number){
     }
 }
 
-var createPDF = function(users){
+var createPDF = function(users, pathFile){
     var d = new Date()
-    doc.pipe(fs.createWriteStream('./recibos'+ d.getDate() +'.pdf'));
+    doc.pipe(fs.createWriteStream(pathFile +'.pdf'));
     for (var i = 0; i<users.length;i++){
         doc.fontSize(24)
         doc.text('CENTRE D\'ESTUDIS GRANOLLERS',{
@@ -42,12 +42,12 @@ var createPDF = function(users){
             lineGap: 0
         })
         doc.moveDown()
-        doc.text('          HE REBUT DE: '+ users[i].surname+', '+users[i].name+ ' ('+users[i].code+')',{
+        doc.text('          HE REBUT DE '+ users[i].surname+', '+users[i].name+ ' ('+users[i].code+')',{
             align: 'left',
             paragraphGap: 0,
             lineGap: 0
         })
-        doc.text('          LA QUANTITAT DE: '+ users[i].import+' euros',{
+        doc.text('          LA QUANTITAT DE '+ users[i].import+' euros',{
             align: 'left',
             paragraphGap: 0,
             lineGap: 0
@@ -58,10 +58,12 @@ var createPDF = function(users){
             lineGap: 0
         })
         doc.text('GRANOLLERS, 1' + ' ' + month(d.getMonth()) + ' ' + d.getFullYear(),{
-            align: 'right',
+            width: 670,
+            align: 'center',
             paragraphGap: 0,
             lineGap: 0
         })
+        doc.moveDown()
         doc.moveDown()
         doc.moveDown()
         doc.moveDown()

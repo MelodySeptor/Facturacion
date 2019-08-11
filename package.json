@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bulma": "^0.7.5",
     "excel-parser": "^0.2.2",
     "express": "^4.17.1",
     "formidable": "^1.2.1",

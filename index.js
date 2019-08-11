@@ -8,11 +8,14 @@ var app = express()
 app.set('view engine', 'pug')
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var pathFileOut = ''
+
 app.get('/', function(req, res){
     res.render('upload')
 })
 
 app.post('/fileupload', function(req, res){
+    pathFileOut = req.body.filetoupload.substring(0,req.body.filetoupload.lastIndexOf('.'))
     dataBlock.users = excelParser.excelParser(req.body.filetoupload)
     dataBlock.users = dataBlock.processUsersToSystem(dataBlock.users)
     console.log(dataBlock.users)
@@ -25,10 +28,10 @@ app.get('/recibo', function(req, res){
 })
 
 app.post('/genRecibos', function(req, res){
-    pdfCreator.createPDF(dataBlock.users)
+    pdfCreator.createPDF(dataBlock.users, pathFileOut)
     res.render('confirmacion')
 })
 
 app.listen(8080, function(){
-    console.log("Server Up.")
+    console.log("Aplicación activada. Por favor, cierre esta ventana una vez se acabe de utilizar.")
 })
