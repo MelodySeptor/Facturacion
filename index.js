@@ -2,6 +2,7 @@ var express = require('express')
 var excelParser = require('./External/excelParser')
 var dataBlock = require('./External/dataBlock')
 var pdfCreator = require('./External/pdfCreator')
+var formidable = require('formidable');
 var bodyParser = require('body-parser');
 var app = express()
 
@@ -15,14 +16,22 @@ app.get('/', function(req, res){
 })
 
 app.post('/fileupload', function(req, res){
-    pathFileOut = req.body.filetoupload.substring(0,req.body.filetoupload.lastIndexOf('.'))
-    dataBlock.users = excelParser.excelParser(req.body.filetoupload)
-    dataBlock.users = dataBlock.processUsersToSystem(dataBlock.users)
-    console.log(dataBlock.users)
-    res.redirect('/recibo')
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var oldpath = files.filetoupload.path;
+        var newpath = './temp/' + 'tempFile.xlsx';
+        fs.rename(oldpath, newpath, function (err) {
+            if (err) throw err;
+            res.redirect('/recibo')
+        });
+    })
 })
 
 app.get('/recibo', function(req, res){
+    dataBlock.users = excelParser.excelParser('./temp/tempFile.xlsx')
+    dataBlock.users = dataBlock.processUsersToSystem(dataBlock.users)
+    pathFileOut = require('path').join(require('os').homedir(), 'Desktop') + "\\recibos"+new Date().getTime()
+    //console.log(dataBlock.users)
     var aux = dataBlock.users
     res.render('principal', {aux:aux})
 })

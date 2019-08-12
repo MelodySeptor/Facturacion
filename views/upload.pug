@@ -18,7 +18,7 @@ html
                     div(class= "box")
                         p= "Bienvenido al generador de recibos. Para empezar, selecciona tu fichero Excel y pulsa aceptar."
                         br
-                        form(action="/fileupload" method="post")
+                        form(action="/fileupload" method="post" enctype="multipart/form-data")
                             input(type="file" name="filetoupload")
                             br
                             br

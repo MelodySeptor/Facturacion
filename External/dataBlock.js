@@ -28,13 +28,13 @@ var processUsersToSystem = function(usersList){
 
     for(var i=0;i<userAuxAux.length;i++){
         if(userAuxAux[i]!=null){
-            console.log(userAuxAux[i])
+            //console.log(userAuxAux[i])
             userAux.push(userAuxAux[i])
         }
     }
     
-    console.log("Limpio")
-    console.log(userAux)
+   // console.log("Limpio")
+    //console.log(userAux)
     return userAux
 }
 

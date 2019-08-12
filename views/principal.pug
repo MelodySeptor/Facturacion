@@ -17,16 +17,16 @@ html
             
                   table(class="table")
                       tr
-                        th= 'Nombre'
                         th= 'Apellidos'
+                        th= 'Nombre'
                         th= 'Codigo'
                         th= 'Importe'
                         th= 'Concepto'
 
                       for item in aux
                         tr
-                          td= item.name
                           td= item.surname
+                          td= item.name
                           td= item.code
                           td= item.import
                           td= item.reason
