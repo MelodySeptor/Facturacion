@@ -19,8 +19,20 @@ var month = function(number){
     }
 }
 
-var createPDF = function(users, pathFile){
+var preparePDF = function(users){
+    var user = []
+
+    for(var i=0;i<users.length-1;i++){
+        user.push(users[i])
+    }
+    return user
+}
+
+var createPDF = function(user, pathFile){
     var d = new Date()
+
+    var users = preparePDF(user)
+
     doc.pipe(fs.createWriteStream(pathFile +'.pdf'));
     for (var i = 0; i<users.length;i++){
         doc.fontSize(24)

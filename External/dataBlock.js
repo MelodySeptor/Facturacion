@@ -6,6 +6,16 @@ function UserTemplate(){
     this.reason=''
 }
 
+var getTotalImport = function(users){
+    var total = 0
+    for(var i=0;i<users.length;i++){
+        total = total + users[i].import
+        console.log(total)
+    }
+    //console.log(total)
+    return total
+}
+
 var processUsersToSystem = function(usersList){
 
     userAuxAux = usersList.map(function(number){
@@ -33,7 +43,15 @@ var processUsersToSystem = function(usersList){
         }
     }
     
-   // console.log("Limpio")
+    var userAuxFinal = new UserTemplate()
+    userAuxFinal.surname="Total"
+    userAuxFinal.name="-"
+    userAuxFinal.code="-"
+    userAuxFinal.import = getTotalImport(userAux)
+    userAuxFinal.reason="-"
+
+    userAux.push(userAuxFinal)
+    //console.log("Limpio")
     //console.log(userAux)
     return userAux
 }

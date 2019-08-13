@@ -14,12 +14,12 @@ html
                           div(class="container")
                               h1(class="title")= "Generador de recibos - Visualización"
                               h2(class="subtitle")= "Creado por Pol Gómez"
-            
+                            
                   table(class="table")
                       tr
                         th= 'Apellidos'
                         th= 'Nombre'
-                        th= 'Codigo'
+                        th= 'Código'
                         th= 'Importe'
                         th= 'Concepto'
 
@@ -28,7 +28,7 @@ html
                           td= item.surname
                           td= item.name
                           td= item.code
-                          td= item.import
+                          td= item.import+"€"
                           td= item.reason
                   br
                   form(action="/genRecibos" method="post")
