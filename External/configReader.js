@@ -1,4 +1,7 @@
 var file = require("fs");
+///////////////////////////////////////////
+/// UNUSED BUT CAN BE USEFULL ON FUTURE ///
+///////////////////////////////////////////
 
 var testConfigurations = function(content){
     var correct = false

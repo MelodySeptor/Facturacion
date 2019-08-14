@@ -2,6 +2,10 @@ fs = require('fs')
 const PDFDocument = require('pdfkit');
 const doc = new PDFDocument;
 
+/**
+ * Function that get number and returns month.
+ * @param {number} number 
+ */
 var month = function(number){
     switch(number){
         case 0: return 'GENER'
@@ -19,6 +23,10 @@ var month = function(number){
     }
 }
 
+/**
+ * Function that extract last item from list. Let's take off total of import.
+ * @param {List of UserTemplate} users 
+ */
 var preparePDF = function(users){
     var user = []
 
@@ -28,6 +36,11 @@ var preparePDF = function(users){
     return user
 }
 
+/**
+ * Function that process all List of users and save it as PDF on the path.
+ * @param {List of UserTemplate} user 
+ * @param {String} pathFile 
+ */
 var createPDF = function(user, pathFile){
     var d = new Date()
 

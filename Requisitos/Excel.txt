@@ -1,0 +1,2 @@
+Información en el formato:
+Apellidos, nombre(codigo) /importe sin €/categoria

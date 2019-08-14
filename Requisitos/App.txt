@@ -1,0 +1,9 @@
+- La aplicación debe ser ràpida.
+- La aplicación debe ser intuible.
+- La aplicación debe ser fàcil de usar.
+- La aplicación debe leer el fichero Excel teniendo en cuenta que no todo son usuarios.
+- La aplicación debe mostrar el total del importe en la web.
+- La aplicación debe generar 3 recibos en cada pàgina.
+- Los recibos generados deben tener el formato de la Foto.
+- Los recibos deben tener el mismo espacio entre ellos.
+- La aplicación debe guardar el fichero resultante en el escritorio de cualquier dispositivo.

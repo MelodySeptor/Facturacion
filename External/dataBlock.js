@@ -1,3 +1,6 @@
+/**
+ * Function that represents an object to create every User.
+ */
 function UserTemplate(){
     this.name=''
     this.surname=''
@@ -6,16 +9,58 @@ function UserTemplate(){
     this.reason=''
 }
 
+/**
+ * Function that gets total import of all users.
+ * @param {List of UserTemplate} users 
+ */
 var getTotalImport = function(users){
     var total = 0
     for(var i=0;i<users.length;i++){
         total = total + users[i].import
-        console.log(total)
+        //console.log(total)
     }
     //console.log(total)
     return total
 }
 
+/**
+ * Function that gets the list cleaned of invalid selections.
+ * @param {List of UserTemplate} users 
+ */
+var getUserListCleaned = function(users){
+    var userAux=[]
+    for(var i=0;i<users.length;i++){
+        if(users[i]!=null){
+            //console.log(userAuxAux[i])
+            userAux.push(userAuxAux[i])
+        }
+    }
+    return userAux
+}
+
+/**
+ * Function that prepares User List to be sended and showed.
+ * @param {List of UserTemplate} users 
+ */
+var prepareFinalUserList = function(users){
+    var userAux=[]
+    userAux = getUserListCleaned(users)
+    
+    var userAuxFinal = new UserTemplate()
+    userAuxFinal.surname="Total"
+    userAuxFinal.name="-"
+    userAuxFinal.code="-"
+    userAuxFinal.import = getTotalImport(userAux)
+    userAuxFinal.reason="-"
+
+    userAux.push(userAuxFinal)
+    return userAux
+}
+
+/**
+ * Function that process all users into the system.
+ * @param {List of UserTemplate} usersList 
+ */
 var processUsersToSystem = function(usersList){
 
     userAuxAux = usersList.map(function(number){
@@ -36,23 +81,7 @@ var processUsersToSystem = function(usersList){
 
     var userAux=[]
 
-    for(var i=0;i<userAuxAux.length;i++){
-        if(userAuxAux[i]!=null){
-            //console.log(userAuxAux[i])
-            userAux.push(userAuxAux[i])
-        }
-    }
-    
-    var userAuxFinal = new UserTemplate()
-    userAuxFinal.surname="Total"
-    userAuxFinal.name="-"
-    userAuxFinal.code="-"
-    userAuxFinal.import = getTotalImport(userAux)
-    userAuxFinal.reason="-"
-
-    userAux.push(userAuxFinal)
-    //console.log("Limpio")
-    //console.log(userAux)
+    userAux = prepareFinalUserList(userAuxAux)
     return userAux
 }
 
