@@ -11,7 +11,7 @@
   "dependencies": {
     "bulma": "^0.7.5",
     "excel-parser": "^0.2.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formidable": "^1.2.1",
     "html-pdf": "^2.2.0",
     "node-xlsx": "^0.15.0",
